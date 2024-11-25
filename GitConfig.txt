@@ -1,0 +1,14 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = Dan Umstattd
+	email = dan.umstattd@gmail.com
+[core]
+	editor = code --wait
+
+[alias]
+  removegone = ! "git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch -D"
+  latestmaster = ! "git checkout master && git pull && git checkout develop && git pull && git fetch --prune origin"
+  
+[push]
+	autoSetupRemote = true
